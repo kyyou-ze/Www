@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter Detail</title>
+  <link rel="stylesheet" href="" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <button class="btn-back" onclick="history.back()">
+      <i class="fas fa-arrow-left"></i> Kembali
+    </button>
+    <div id="chapter-content">
+      <p>Memuat chapter...</p>
+    </div>
+  </div>
+
+  <script>
+  const jsonUrl = 'https://raw.githubusercontent.com/kyyou-ze/Data/main/Data.json';
+
+  function getParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      id: params.get('id'),
+      ch: parseInt(params.get('ch'))
+};
+}
+
+  fetch(jsonUrl)
+.then(res => {
+      if (!res.ok) throw new Error('Gagal mengambil data');
+      return res.json();
+})
+.then(data => {
+      const { id, ch} = getParams();
+      console.log("ID:", id, "CH:", ch);
+
+      const novel = data.find(n => n.id === id);
+      if (!novel) {
+        document.getElementById('chapter-content').innerHTML = '<p>Novel tidak ditemukan.</p>';
+        return;
+}
+
+      const chapter = novel.chapters?.[ch];
+      if (!chapter) {
+        document.getElementById('chapter-content').innerHTML = '<p>Chapter tidak ditemukan.</p>';
+        return;
+}
+
+      document.getElementById('chapter-content').innerHTML = `
+        <h2>${chapter.title}</h2>
+        <div class="views"><i class="fas fa-eye"></i> ${chapter.views} views</div>
+        <div class="chapter-text">
+          <p>${chapter.content}</p>
+        </div>
+      `;
+})
+.catch(err => {
+      console.error('Fetch error:', err);
+      document.getElementById('chapter-content').innerHTML = '<p>Gagal memuat chapter.</p>';
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+
+body {
+  margin: 0;
+  background-color: #000;
+  font-family: sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background: #d4b55b;
+  padding: 10px;
+  color: white;
+}
+
+.left, .right {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger {
+  font-size: 20px;
+  cursor: pointer;
+}
+.search-container {
+  position: relative;
+  flex: 1;
+  max-width: 100vh;
+  margin: 0 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 35px 8px 35px; /* left padding buat icon */
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: gray;
+  pointer-events: none;
+}
+
+
+
+.profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+/* Sidebar */
+.sidebar {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 200px;
+  height: 92vh;
+  background: #222;
+  color: white;
+  padding: 10px;
+  display: none;
+  z-index: 100;
+}
+
+.sidebar a {
+  color: white;
+  display: block;
+  padding: 8px 0;
+  text-decoration: none;
+}
+.sidebar.show {
+  display: block;
+}
+
+
+.card {
+  margin: 10px;
+  display: flex;
+  gap: 12px; /* kasih jarak yang agak lebih lega */
+  background: radial-gradient(circle at left, rgba(255, 255, 255, 0.2));
+  padding: 20px;
+  height: 30%;
+  border-radius: 16px;
+  color: #fff;
+  position: relative;
+  max-width: 100%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  align-items: center; /* biar isi sejajar tengah */
+}
+
+.card img {
+  width: 120px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  margin: 6px 0 6px 6px;
+}
+
+/* Buat kontainer untuk teks biar gampang styling */
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1; /* agar teks mengisi ruang tersisa */
+}
+
+.card-content h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  margin: 4px 0;
+}
+
+.card-content p.year {
+  color: #f0b100; /* warna tahun */
+  font-weight: bold;
+}
+
+.card-content p.status {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Tag tombol tetap seperti semula */
+.card-content .tags {
+  margin-top: 10px;
+}
+
+.card-content .tags {
+  background-color: #555;
+  border: none;
+  padding: 4px 12px;
+  margin-right: 6px;
+  margin-top: 6px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: white;
+  cursor: pointer;
+}
+
+button {
+  border-radius: 10px;
+  background-color: #ffc107;
+}
+.rating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ffc107;
+  color: #222;
+  padding: 6px 10px;
+  border-radius: 50% 50% 50% 0;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.rating::before {
+  content: '★ ';
+  color: black;
+  margin-right: 2px;
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-height: none;
+  }
+
+  .card img {
+    width: 100px;
+    height: auto;
+    margin: 0 0 10px 0;
+  }
+
+  .rating {
+    top: 5px;
+    right: 5px;
+  }
+}
+
+.swiper {
+  width: 100%;
+  justify-content: center;
+  overflow: hidden;
+  padding: 10px 0; /* ubah koma jadi spasi */
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
+.swiper-slide {
+  flex-shrink: 0;
+  width: auto;
+}
+
+.latest-section {
+  padding: 40px;
+  background: #121212;
+  color: white;
+}
+.latest-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+.latest-item img {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+.latest-info {
+  flex: 1;
+}
+.latest-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.chapter-list {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+.chapter-badge {
+  background: #333;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.time {
+  font-size: 12px;
+  color: #aaa;
+}
